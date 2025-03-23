@@ -24,4 +24,4 @@ ${LOGIN_SUCCESSFUL_MESSAGE}          xpath=/html/body/div/div/p[2]
 ${SIGNUP_SUCCESSFUL_MESSAGE}         xpath=/html/body/div/div/p[2]
 
 #arq. de texto
-${CREDENTIALS_FILE}                  ${CURDIR}/credentials.txt
+${CREDENTIALS_FILE}                  ${EXECDIR}/credentials.txt
