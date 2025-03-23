@@ -15,7 +15,7 @@ de usuário.
 🔗 https://teste-estagiarios.vercel.app/ - aplicação Web
 
 ## 🛠 Tecnologias e Ferramentas 
-- Linguagem de programação: Phython, Java Script
+- Linguagem de programação: Python, Java Script
 - Framework de testes: Robot Framework
 - Ferramentas de suporte: Selenium Library, Faker Library
 
@@ -43,7 +43,7 @@ Para rodar o projeto com sucesso, é necessário ter instalado:
   git clone https://github.com/bibiarevalo/Teste-Automatizado-Robot-Framework.git
   cd Teste-Automatizado-Robot-Framework
 ```
-**2.** Instale as dependêcias:
+**2.** Instale as dependências:
 ```bash
   pip install robotframework 
   pip install --upgrade robotframework-seleniumlibrary 
