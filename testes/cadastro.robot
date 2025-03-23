@@ -24,22 +24,22 @@ Preencher campos de Cadastro
     ${email}        FakerLibrary.Email
     ${password}     FakerLibrary.Password
 
-    Input Text    ${INPUT_EMAIL}    ${email}
+    Input Text        ${INPUT_EMAIL}      ${email}
     Input Password    ${INPUT_PASSWORD}   ${password}
 
-    ${file_content}    Set Variable    ${email}\n${password}
+    ${file_content}    Set Variable       ${email}\n${password}
     Create File    ${CREDENTIALS_FILE}    ${file_content}    UTF-8
 
 Clicar no botão "Signup"
     Wait Until Element Is Visible    ${BTN_SIGNUP}       timeout=10s
-    Click Element   ${BTN_SIGNUP}
+    Click Element                    ${BTN_SIGNUP}
     
 Verificar se o cadastro foi bem sucedido
     Wait Until Page Contains Element    ${WELCOME}       timeout=5s
 
 #Cenário 2
 Validar mensagem de input vazio
-    Click Button    ${BTN_SIGNUP}
+    Click Button                     ${BTN_SIGNUP}
     Wait Until Element Is Visible    ${BTN_SIGNUP}       timeout=1s
  
     ${validation_messages}=    Execute JavaScript
@@ -49,6 +49,27 @@ Validar mensagem de input vazio
  
     Should not be empty    ${validation_messages}
     Sleep    2s
+
+#Cenário 3
+Preencher campo de e-mail invalido
+    ${userName}        FakerLibrary.UserName
+    ${invalid_email}        Set Variable    ${userName}@#invalid.com
+    ${password}     FakerLibrary.Password
+
+    Input Text        ${INPUT_EMAIL}        ${invalid_email}
+    Input Password    ${INPUT_PASSWORD}     ${password}
+
+Verificar mensagem de e-mail invalido
+    Wait Until Element Is Visible    ${BTN_SIGNUP}       timeout=1s
+ 
+    ${validation_messages}=    Execute JavaScript
+    ...    return Array.from(document.querySelectorAll("input[required]:invalid"))
+    ...        .map(input => input.validationMessage)
+    ...        .join("; ");
+ 
+    Should not be empty    ${validation_messages}
+    Sleep    2s
+
 
 *** Test Cases ***
 Cenario 1: Cadastro bem-sucedido 
@@ -63,3 +84,11 @@ Cenario 2: Campos Obrigatórios
     Clicar no botão "Password-based Authentication"
     Clicar no botão "Create new account"
     Validar mensagem de input vazio
+
+Cenario 3: Validação do formato do E-mail
+    Abrir site    
+    Clicar no botão "Password-based Authentication"
+    Clicar no botão "Create new account"
+    Preencher campo de e-mail invalido
+    Clicar no botão "Signup"
+    Verificar mensagem de e-mail invalido
