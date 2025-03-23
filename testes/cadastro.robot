@@ -34,9 +34,21 @@ Clicar no botão "Signup"
     Wait Until Element Is Visible    ${BTN_SIGNUP}       timeout=10s
     Click Element   ${BTN_SIGNUP}
     
-
 Verificar se o cadastro foi bem sucedido
     Wait Until Page Contains Element    ${WELCOME}       timeout=5s
+
+#Cenário 2
+Validar mensagem de input vazio
+    Click Button    ${BTN_SIGNUP}
+    Wait Until Element Is Visible    ${BTN_SIGNUP}       timeout=1s
+ 
+    ${validation_messages}=    Execute JavaScript
+    ...    return Array.from(document.querySelectorAll("input[required]:invalid"))
+    ...        .map(input => input.validationMessage)
+    ...        .join("; ");
+ 
+    Should not be empty    ${validation_messages}
+    Sleep    2s
 
 *** Test Cases ***
 Cenario 1: Cadastro bem-sucedido 
@@ -46,4 +58,8 @@ Cenario 1: Cadastro bem-sucedido
     Preencher campos de Cadastro
     Clicar no botão "Signup"
     Verificar se o cadastro foi bem sucedido
-
+Cenario 2: Campos Obrigatórios
+    Abrir site    
+    Clicar no botão "Password-based Authentication"
+    Clicar no botão "Create new account"
+    Validar mensagem de input vazio
