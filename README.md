@@ -15,7 +15,7 @@ de usuário.
 🔗 https://teste-estagiarios.vercel.app/ - aplicação Web
 
 ## 🛠 Tecnologias e Ferramentas 
-- Linguagem de programação: Phython
+- Linguagem de programação: Phython, Java Script
 - Framework de testes: Robot Framework
 - Ferramentas de suporte: Selenium Library, Faker Library
 
