@@ -62,7 +62,7 @@ Para rodar o projeto com sucesso, é necessário ter instalado:
 
 # rodar uma suite de testes
   cd .\testes\
-  robot -d results cadastro.robot 
+  robot -d results nome-do-arquivo.robot 
 ```
 
 ## 📂 Estrutura dos Testes  
