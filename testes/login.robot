@@ -34,6 +34,19 @@ Clicar no botão "Login"
 Verificar se o login foi bem sucedido
     Wait Until Page Contains Element    ${LOGIN_SUCESSFUL}       timeout=5s
 
+
+#Cenário 2
+
+Preencher campos de Login incorretos
+    ${email}        FakerLibrary.Email
+    ${password}     FakerLibrary.Password
+
+    Input Text    ${INPUT_EMAIL}    ${email}
+    Input Password    ${INPUT_PASSWORD}   ${password}
+
+Verificar se a mensagem "Usuário ou senha inválidos" é exibida
+    Wait Until Page Contains Element    ${INVALID_CREDENTIALS}       timeout=5s
+    
 *** Test Cases ***
 Cenario 1: Login bem-sucedido 
     Abrir site    
@@ -41,3 +54,10 @@ Cenario 1: Login bem-sucedido
     Preencher campos de Login
     Clicar no botão "Login"
     Verificar se o login foi bem sucedido
+
+Cenario 2: Login com credenciais erradas
+    Abrir site    
+    Clicar no botão "Password-based Authentication"
+    Preencher campos de Login incorretos
+    Clicar no botão "Login"
+    Verificar se a mensagem "Usuário ou senha inválidos" é exibida
