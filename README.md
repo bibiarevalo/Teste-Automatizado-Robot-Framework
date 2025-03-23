@@ -1,5 +1,5 @@
 
-# Teste Estagiario - Robot
+# Teste Estagiário - Robot
 
 ## Sobre o projeto
 
@@ -31,7 +31,7 @@ Para rodar o projeto com sucesso, é necessário ter instalado:
 
 [Faker Library](https://pypi.org/project/robotframework-faker/)
 
-[Python](https://www.python.org/)
+[Python](https://www.python.org/) - 3.13.2
 
 [Selenium Library](https://robotframework.org/SeleniumLibrary/)
 
