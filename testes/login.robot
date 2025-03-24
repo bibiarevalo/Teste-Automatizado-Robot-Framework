@@ -38,14 +38,23 @@ Verificar se o login foi bem sucedido
 #Cenário 2
 
 Preencher campos de Login incorretos
-    ${email}        FakerLibrary.Email
-    ${password}     FakerLibrary.Password
+    ${email_incorreto}        FakerLibrary.Email
+    ${password_incorreto}     FakerLibrary.Password
 
-    Input Text    ${INPUT_EMAIL}    ${email}
-    Input Password    ${INPUT_PASSWORD}   ${password}
+    Input Text    ${INPUT_EMAIL}    ${email_incorreto}
+    Input Password    ${INPUT_PASSWORD}   ${password_incorreto}
 
 Verificar se a mensagem "Invalid credentials" é exibida
     Wait Until Page Contains Element    ${INVALID_CREDENTIALS_MESSAGE}       timeout=5s
+
+# Cenário 3
+Preencher campo de e-mail com um e-mail não cadastrado
+    ${email_n_cadastrado}        FakerLibrary.Email
+    ${password_n_cadastrado}     FakerLibrary.Password
+
+    Input Text    ${INPUT_EMAIL}    ${email_n_cadastrado}
+    Input Password    ${INPUT_PASSWORD}   ${password_n_cadastrado}
+
     
 *** Test Cases ***
 Cenario 1: Login bem-sucedido 
@@ -59,5 +68,12 @@ Cenario 2: Login com credenciais erradas
     Abrir site    
     Clicar no botão "Password-based Authentication"
     Preencher campos de Login incorretos
+    Clicar no botão "Login"
+    Verificar se a mensagem "Invalid credentials" é exibida
+
+Cenario 3: Login com conta inexistente
+    Abrir site    
+    Clicar no botão "Password-based Authentication"
+    Preencher campo de e-mail com um e-mail não cadastrado
     Clicar no botão "Login"
     Verificar se a mensagem "Invalid credentials" é exibida
