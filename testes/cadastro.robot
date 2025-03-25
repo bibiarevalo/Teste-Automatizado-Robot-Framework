@@ -76,10 +76,10 @@ Verificar mensagem de e-mail invalido
 
 #Cenário 4
 Preencher os campos com um e-mail e senha válidos
-    ${CREDENTIALS}    Get File    ${CURDIR}/credentials.txt
+    ${CREDENTIALS}    Get File    ${EXECDIR}/credentials.txt
 
     ${credenciais_lista}    Split To Lines    ${CREDENTIALS}
-
+    
     ${email}    Get From List       ${credenciais_lista}    0
     ${password}    Get From List    ${credenciais_lista}    1
 
