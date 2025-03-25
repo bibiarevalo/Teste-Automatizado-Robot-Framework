@@ -16,7 +16,7 @@ Clicar no botão "Password-based Authentication"
     Wait Until Page Contains Element        ${LINK_CREATE_ACCOUNT}        timeout=5s
 
 Preencher campos de Login
-    ${CREDENTIALS}    Get File    ${CURDIR}/credentials.txt
+    ${CREDENTIALS}    Get File    ${EXECDIR}/credentials.txt
 
     ${credenciais_lista}    Split To Lines    ${CREDENTIALS}
 
